@@ -119,7 +119,7 @@ async function listFiles(authClient) {
 // const drive = new GoogleDrive({
 //   keyFilename: process.env.GOOGLE_DRIVE_KEY_FILE,
 // });
-async function uploadBasic(authClient) {
+async function uploadBasic(authClient,namef) {
   const fs = require('fs');
   const {GoogleAuth} = require('google-auth-library');
   const {google} = require('googleapis');
@@ -131,7 +131,7 @@ async function uploadBasic(authClient) {
   // });
   const service = google.drive({version: 'v3', auth: authClient});
   const fileMetadata = {
-    name: 'photo.jpg',
+    name: `${namef}`,
   };
   const media = {
     mimeType: 'image/jpeg',
@@ -174,7 +174,8 @@ async function searchFile(authClient,namef) {
   console.log(namef);
   try {
     const res = await service.files.list({
-      q: `name=\'${namef}\'`,
+      q: `
+      name=\'${namef}\'`,
       fields: 'nextPageToken, files(id, name)',
       spaces: 'drive',
     });
@@ -245,8 +246,8 @@ export class NestapiService {
   findAll() {
     return authorize().then(listFiles).catch(console.error);
   }
-  upLoad() {
-    return authorize().then(uploadBasic).catch(console.error);
+  upLoad(name:string) {
+    return authorize().then((value)=>uploadBasic(value,name)).catch(console.error);
   }
   Search(name:string) {
     return authorize().then((value)=>searchFile(value,name)).catch(console.error);

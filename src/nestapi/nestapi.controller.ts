@@ -16,9 +16,9 @@ export class NestapiController {
   findAll() {
     return this.nestapiService.findAll();
   }
-  @Get('upload')
-  upLoad() {
-    return this.nestapiService.upLoad();
+  @Get('upload/:name')
+  upLoad(@Param('name') name: string) {
+    return this.nestapiService.upLoad(name);
   }
   @Get('search/:name')
   Search(@Param('name') name: string) {
