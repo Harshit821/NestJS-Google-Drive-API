@@ -53,7 +53,7 @@ $ npm run start:prod
 $ http://localhost:3000/nestapi/list
 
 # For uploading google drive
-$ http://localhost:3000/nestapi/upload
+$ http://localhost:3000/nestapi/upload/file_name
 
 # For searching google drive
 $ http://localhost:3000/nestapi/search/file_name
