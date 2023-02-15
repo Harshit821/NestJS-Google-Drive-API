@@ -45,6 +45,24 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+
+## Running the api on Postman
+
+```bash
+# For listing google drive
+$ http://localhost:3000/nestapi/list
+
+# For uploading google drive
+$ http://localhost:3000/nestapi/upload
+
+# For searching google drive
+$ http://localhost:3000/nestapi/search/file_name
+
+# For Downloading google drive
+$ http://localhost:3000/nestapi/download/file_name
+```
+
+
 ## Test
 
 ```bash
